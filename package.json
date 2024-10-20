@@ -1,0 +1,19 @@
+{
+  "name": "i18n-export",
+  "version": "1.0.0",
+  "main": "index.js",
+  "module": "commonJS",
+  "scripts": {
+    "stepOne": "node ./generater.js",
+    "stepTwo": "node ./generaterCsv.js",
+    "stepThree": "node ./generaterJson.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "csv-parse": "^5.5.6",
+    "csv-stringify": "^6.5.1"
+  }
+}
