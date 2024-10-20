@@ -130,5 +130,5 @@ dist
 .pnp.*
 
 # 项目导出文件下不提交
-output/*
-temp/*
+output/
+temp/
