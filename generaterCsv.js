@@ -1,4 +1,5 @@
 const fs = require('fs');
+const path = require('path');
 const { languages } = require('./config');
 const { readJsonFile } = require('./util');
 const { stringify } = require("csv-stringify");
@@ -40,9 +41,16 @@ function generaterCsv() {
 
 
     stringify(data, { header: true, columns }, function (err, output) {
-        fs.writeFileSync("./output/messages.csv", output);
-        console.log('已生成最新csv文件，文件位于/output/messages.csv');
-        console.log('上传文件到Google文档,共享访问连接，在config中配置地址，翻译完成后，执行npm run stepThree 生成最新的JSON多语言文件');
+        const dirPath = path.join(__dirname, 'output');
+        const filePath = path.join(dirPath, 'messages.csv');
+        try {
+            fs.mkdirSync(dirPath, {recursive: true});
+            fs.writeFileSync(filePath, output);
+            console.log('已生成最新csv文件，文件位于/output/messages.csv');
+            console.log('上传文件到Google文档,共享访问连接，在config中配置地址，翻译完成后，执行npm run stepThree 生成最新的JSON多语言文件');
+        } catch (error) {
+            throw error;
+        }
     });
 }
 
